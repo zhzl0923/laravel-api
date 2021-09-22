@@ -176,7 +176,6 @@ class Response
         if (is_null($errors)) {
             $response->throwResponse();
         }
-
         return $response;
     }
     /**

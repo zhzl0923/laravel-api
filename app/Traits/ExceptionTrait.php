@@ -37,6 +37,7 @@ trait ExceptionTrait
      */
     protected function prepareJsonResponse($request, Throwable $e)
     {
+
         return Response::error(
             $e->getMessage(),
             $this->isHttpException($e) ? $e->getStatusCode() : 500,
@@ -56,6 +57,7 @@ trait ExceptionTrait
      */
     protected function prepareResponse($request, Throwable $e)
     {
+
         if (config('response.is_unified_return_json')) {
             return $this->prepareJsonResponse($request, $e);
         }

@@ -1,5 +1,7 @@
 <?php
 
-$api->version('v1', function ($api) {
-    $api->post('/login', 'AuthController@login');
+use Illuminate\Support\Facades\Route;
+
+Route::prefix('auth')->group(function ($route) {
+    $route->post('login', 'AuthController@login');
 });

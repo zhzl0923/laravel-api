@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Response\Facade\Response;
 use App\Services\AdminService;
-use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {

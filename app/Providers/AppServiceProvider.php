@@ -25,9 +25,5 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        app('api.exception')->register(function (Exception $exception) {
-            $request = Request::capture();
-            return app(Handler::class)->render($request, $exception);
-        });
     }
 }

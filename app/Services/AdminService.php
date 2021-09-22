@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Repository\Eloquents\AdminRepository;
+use App\Repository\Eloquent\AdminRepository;
 
 class AdminService
 {

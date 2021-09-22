@@ -37,23 +37,23 @@ class RouteServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->configureRateLimiting();
-        $api = app('Dingo\Api\Routing\Router');
-        $this->routes(function () use ($api) {
-            $api->version('v1', ['prefix' => 'admin', 'namespace' => $this->admin], function ($api) {
-                $files = glob(base_path('routes') . '/admin/*.php');
-                foreach ($files as $file) {
-                    include $file;
-                }
-            });
 
+        $this->routes(function () {
+            Route::prefix('admin')
+                ->namespace($this->admin)
+                ->group(function () {
+                    $files = glob(base_path('routes') . '/admin/*.php');
+                    foreach ($files as $file) {
+                        include $file;
+                    }
+                });
             Route::prefix('api')
-                ->group(function () use ($api) {
-                    $api->version('v1', ['prefix' => 'api', 'namespace' => $this->api], function ($api) {
-                        $files = glob(base_path('routes') . '/api/*.php');
-                        foreach ($files as $file) {
-                            include $file;
-                        }
-                    });
+                ->namespace($this->api)
+                ->group(function () {
+                    $files = glob(base_path('routes') . '/api/*.php');
+                    foreach ($files as $file) {
+                        include $file;
+                    }
                 });
         });
     }
